@@ -1,0 +1,31 @@
+{% block content %}
+    <h2>Users List</h2>
+{% if user.is_authenticated %}
+    <div><a href="/logout">Log out</a></div>
+    <div>
+        <p>Auth_user</p>
+        <table>
+            {% if auth_user %}
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Date Joined</th>
+                    </tr>
+                {% for user in auth_user %}
+                    <tr>
+                        <td>{{user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.first_name}}</td>
+                        <td>{{user.last_name}}</td>
+                        <td>{{user.date_joined|date:'d.m.Y H:i:s'}}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+{% else %}
+<div><a href="/login">Log In</a></div>
+{% endif %}
+{% endblock %}

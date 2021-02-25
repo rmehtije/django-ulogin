@@ -1,0 +1,12 @@
+{% block title %}Login{% endblock %}
+{% load ulogin_tags %}
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    {% ulogin_widget "fb" %}
+    <button type="submit">Login</button>
+    <div><a href="/register">Create an account</a></div>
+
+</form>
+{% endblock %}
